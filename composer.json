@@ -1,0 +1,13 @@
+{
+    "name": "commonledger/myob-php-sdk",
+    "description": "A PHP SDK for interacting with the MYOB AccountRight Live V2 API",
+    "require": {
+        "guzzle/guzzle": "3.7.*"
+    },
+    "authors": [
+        {
+            "name": "Common Ledger",
+            "email": "api@commonledger.com"
+        }
+    ]
+}
