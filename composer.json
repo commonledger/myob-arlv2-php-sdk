@@ -1,5 +1,5 @@
 {
-    "name": "commonledger/myob-php-sdk",
+    "name": "commonledger/myob-arlv2-php-sdk",
     "description": "A PHP SDK for interacting with the MYOB AccountRight Live V2 API",
     "require": {
         "guzzle/guzzle": "3.7.*"
