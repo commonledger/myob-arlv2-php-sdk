@@ -4,6 +4,11 @@
     "require": {
         "guzzle/guzzle": "3.7.*"
     },
+    "autoload": {
+		"psr-0": {
+			"MYOB\\": "lib/"
+		}
+	},
     "authors": [
         {
             "name": "Common Ledger",
