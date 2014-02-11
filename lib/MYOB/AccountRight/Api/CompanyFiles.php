@@ -12,4 +12,9 @@ class CompanyFiles extends AbstractEndpoint {
         return $response->body;
     }
 
+    public function get(array $options = array()){
+        $response = $this->client->get('', array(), $options);
+        return $response->body;
+    }
+
 }

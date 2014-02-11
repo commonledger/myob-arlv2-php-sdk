@@ -33,6 +33,13 @@ class ErrorHandler
         if ($response->isContentType('json') && is_array($body)) {
             if (isset($body['Message'])) {
                 $message = $body['Message'];
+            } else if(isset($body['Errors'])){
+                $errors = array();;
+                foreach($body['Errors'] as $error)
+                    $errors[] = "{$error['Name']}: {$error['Message']}";
+
+                $message = implode("\n", $errors);
+
             } else {
                 $message = $code;
             }
