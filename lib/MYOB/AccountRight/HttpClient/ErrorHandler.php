@@ -5,6 +5,7 @@ namespace MYOB\AccountRight\HttpClient;
 use Guzzle\Common\Event;
 use Guzzle\Http\Message\Request;
 use MYOB\AccountRight\Exception\ClientException;
+use MYOB\AccountRight\Exception\OAuthException;
 
 
 /**
@@ -48,6 +49,24 @@ class ErrorHandler
         if (empty($message)) {
             $message = "HTTP {$code}: {$status}";
         }
-        throw new ClientException($message, $code, $response);
+
+        if($code === 401){
+            $oauth_params = array();
+            if($request->hasHeader('Authorization')){
+                $auth_header = $request->getHeaders()->get('Authorization')->toArray();
+                list(,$access_token) = explode(' ', $auth_header[0]);
+                $oauth_params['access_token'] = $access_token;
+            }
+            if($request->hasHeader('x-myobapi-cftoken')){
+                $auth_header = $request->getHeaders()->get('x-myobapi-cftoken')->toArray();
+                $oauth_params['cf_token'] = $auth_header[0];
+            }
+
+            throw new OAuthException($message, $code, $oauth_params);
+        }
+        else {
+            throw new ClientException($message, $code, $response);
+        }
+
     }
 }
