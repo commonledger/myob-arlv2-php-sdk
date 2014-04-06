@@ -69,7 +69,7 @@ class Auth extends AbstractEndpoint {
 
         }
         catch(ClientException $error){
-            throw new OAuthException($error->getMessage());
+            throw new OAuthException($error->getMessage(), $error->getCode());
         }
 
         $access_token = $response->body;
