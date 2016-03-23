@@ -29,4 +29,7 @@ class GeneralLedger extends AbstractEndpoint {
         return new GeneralLedger\JournalTransaction($this->prefix, $this->client);
     }
 
+    public function contact(){
+        return new GeneralLedger\Contact($this->prefix, $this->client);
+    }
 }
