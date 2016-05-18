@@ -29,8 +29,11 @@ class Client {
         return new Api\Auth($oauth_params, $this->httpClient);
     }
 
-    public function companyFiles(){
-        return new Api\CompanyFiles($this->httpClient);
+    public function companyFiles() {
+        // Use HATEOAS endpoint discovery
+        // http://developer.myob.com/api/accountright/best-practice-guides/hypermedia-and-uris/
+        $companyfiles = $this->httpClient->get($this->api_entry_url)->body;
+        return $companyfiles;
     }
 
     public function generalLedger() {
