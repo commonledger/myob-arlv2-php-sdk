@@ -19,7 +19,13 @@ class JournalTransaction extends AbstractEndpoint {
 
 
     public function getAll(array $filters = array()){
-        $response = $this->client->get("{$this->prefix}/JournalTransaction", $filters);
+
+        try{
+            $response = $this->client->get("{$this->prefix}/JournalTransaction", $filters);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            throw $e;
+        }
 
         return $response->body;
     }
