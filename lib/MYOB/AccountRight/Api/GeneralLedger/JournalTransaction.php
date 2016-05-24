@@ -22,7 +22,7 @@ class JournalTransaction extends AbstractEndpoint {
 
         try{
             $response = $this->client->get("{$this->prefix}/JournalTransaction", $filters);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             echo $e->getMessage();
             throw $e;
         }
