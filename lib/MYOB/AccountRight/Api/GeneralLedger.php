@@ -21,6 +21,10 @@ class GeneralLedger extends AbstractEndpoint {
         return new GeneralLedger\AccountingProperties($this->prefix, $this->client);
     }
 
+    public function linkedAccount(){
+        return new GeneralLedger\LinkedAccount($this->prefix, $this->client);
+    }
+
     public function generalJournal(){
         return new GeneralLedger\GeneralJournal($this->prefix, $this->client);
     }

@@ -1,13 +1,14 @@
 <?php
 
 
+
 namespace MYOB\AccountRight\Api\GeneralLedger;
 
-
 use MYOB\AccountRight\Api\AbstractEndpoint;
+use MYOB\AccountRight\Exception\UnexpectedResponseException;
 use MYOB\AccountRight\HttpClient\HttpClient;
 
-class JournalTransaction extends AbstractEndpoint {
+class LinkedAccount extends AbstractEndpoint {
 
     private $prefix;
 
@@ -19,9 +20,8 @@ class JournalTransaction extends AbstractEndpoint {
 
 
     public function getAll(array $filters = array()){
-
         try {
-            $response = $this->client->get("{$this->prefix}/JournalTransaction", $filters);
+            $response = $this->client->get("{$this->prefix}/LinkedAccount", $filters);
         } catch (\Exception $e) {
             echo $e->getMessage();
             throw $e;
