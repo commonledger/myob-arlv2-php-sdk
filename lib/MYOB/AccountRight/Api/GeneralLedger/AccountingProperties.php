@@ -12,7 +12,7 @@ class AccountingProperties extends AbstractEndpoint {
 
     private $prefix;
 
-    public function __construct($prefix, HttpClient $client) {
+    public function __construct(string $prefix, HttpClient $client) {
         parent::__construct($client);
 
         $this->prefix = $prefix;
